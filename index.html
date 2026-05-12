@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Aprenda programação do zero: Pseudolinguagem, C# e Java"/>
+  <meta name="author" content="Prof. Djalma"/>
+  <title>Aprenda Programação 🚀</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<header>
+  <div class="header-glow"></div>
+  <h1>🚀 Aprenda <span>Programação</span></h1>
+  <p>Pseudolinguagem · C# · Java — do zero, passo a passo</p>
+</header>
+
+<div id="topbar">
+  <span class="label">Progresso</span>
+  <div id="prog-outer"><div id="prog-inner"></div></div>
+  <span id="xp">⭐ 0 XP</span>
+  <div id="lang-badge">
+    <span class="lbadge pseudo">Pseudolinguagem</span>
+    <span class="lbadge csharp">C#</span>
+    <span class="lbadge java">Java</span>
+  </div>
+</div>
+
+<div id="mod-nav">
+  <button class="mnav active" onclick="goTo(0)" id="nav-0">1. Lógica & Pseudocódigo</button>
+  <button class="mnav" onclick="goTo(1)" id="nav-1">2. Variáveis e Tipos</button>
+  <button class="mnav" onclick="goTo(2)" id="nav-2">3. Entrada e Saída</button>
+  <button class="mnav" onclick="goTo(3)" id="nav-3">4. Condicionais</button>
+  <button class="mnav" onclick="goTo(4)" id="nav-4">5. Laços</button>
+  <button class="mnav" onclick="goTo(5)" id="nav-5">6. Vetores</button>
+  <button class="mnav" onclick="goTo(6)" id="nav-6">7. Funções/Métodos</button>
+</div>
+
+<div id="main">
+
+  <!-- ═══════════════════════════════════════ MÓDULO 0 -->
+  <div class="module active" id="module-0">
+    <h2 class="mod-title">💡 Lógica e Pseudolinguagem</h2>
+    <p class="mod-sub">Antes de escrever código real, aprenda a pensar como um programador.</p>
+
+    <div class="card">
+      <h3>Por que pseudolinguagem?</h3>
+      <p>Pseudolinguagem é uma forma de escrever algoritmos em português estruturado, parecido com código real mas sem as regras rígidas de uma linguagem específica. Serve para planejar a solução antes de programar de verdade.</p>
+      <div class="analogy">💬 É como fazer um rascunho antes de escrever uma redação. Você organiza as ideias primeiro, depois se preocupa com a gramática.</div>
+    </div>
+
+    <div class="card">
+      <h3>Estrutura básica de um algoritmo</h3>
+      <p>Todo algoritmo possui: <code>ALGORITMO</code> (nome), <code>VAR</code> (declaração de variáveis), <code>INÍCIO</code> (onde começa a execução) e <code>FIM</code> (onde termina). As variáveis sempre são declaradas antes do INÍCIO.</p>
+    </div>
+
+    <div class="tip">
+      <strong>💡 Como usar o interpretador:</strong> Escreva pseudocódigo e clique em <strong>▶ Executar</strong>.
+      Comandos suportados: <code>ESCREVA()</code>, <code>LEIA(var : valor)</code>,
+      <code>SE/ENTÃO/SENÃO/FIM_SE</code>, <code>PARA/ATÉ/FAÇA/FIM_PARA</code>,
+      <code>ENQUANTO/FAÇA/FIM_ENQUANTO</code>.
+    </div>
+
+    <div class="lang-tabs">
+      <div class="ltab active pseudo">📋 Pseudolinguagem</div>
+    </div>
+    <div class="code-block pseudo-block">
+      <div class="code-head">
+        <div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+        <span class="file">algoritmo01.pseudo</span>
+      </div>
+      <textarea class="editor pseudo-ed" id="e0-0" spellcheck="false">ALGORITMO "MeuPrimeiro"
+VAR
+   nome  : CARACTERE
+   idade : INTEIRO
+
+INÍCIO
+   nome  <- "Maria"
+   idade <- 16
+
+   ESCREVA("Olá, ", nome)
+   ESCREVA("Você tem ", idade, " anos.")
+   ESCREVA("Bem-vinda ao mundo da programação!")
+FIM</textarea>
+      <div class="code-foot">
+        <button class="btn-run" onclick="runPseudo('e0-0','o0-0')">▶ Executar</button>
+        <button class="btn-reset" onclick="resetEditor('e0-0')">↺ Resetar</button>
+      </div>
+      <div class="output" id="o0-0"></div>
+    </div>
+
+    <div class="card">
+      <h3>A mesma ideia nas três linguagens</h3>
+      <p>A lógica é idêntica — só a sintaxe muda. Aprenda a lógica uma vez e adapte para qualquer linguagem.</p>
+    </div>
+
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="compare-head pseudo">📋 PSEUDOLINGUAGEM</div>
+        <pre class="compare-code"><span class="kw-p">ALGORITMO</span> <span class="str">"Ola"</span>
+<span class="kw-p">INÍCIO</span>
+   <span class="kw-p">ESCREVA</span>(<span class="str">"Olá, mundo!"</span>)
+<span class="kw-p">FIM</span></pre>
+      </div>
+      <div class="compare-card">
+        <div class="compare-head csharp">🔷 C#</div>
+        <pre class="compare-code"><span class="kw-c">using</span> System;
+<span class="kw-c">class</span> Program {
+  <span class="kw-c">static void</span> Main() {
+    Console.WriteLine(<span class="str">"Olá, mundo!"</span>);
+  }
+}</pre>
+      </div>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="compare-head java">☕ JAVA</div>
+        <pre class="compare-code"><span class="kw-j">public class</span> Ola {
+  <span class="kw-j">public static void</span> main(String[] args) {
+    System.out.println(<span class="str">"Olá, mundo!"</span>);
+  }
+}</pre>
+      </div>
+      <div class="compare-card info-card">
+        <p>A <strong>lógica</strong> é a mesma!<br>Só a <strong>sintaxe</strong> muda.<br>Aprenda a lógica uma vez,<br>adapte para qualquer linguagem.</p>
+      </div>
+    </div>
+
+    <div class="challenge">
+      <div class="challenge-tag">🎯 Desafio 1</div>
+      <h3>Escreva seu primeiro algoritmo</h3>
+      <p>Declare uma variável <code>mensagem</code> do tipo <code>CARACTERE</code>, atribua um texto e use <code>ESCREVA</code> para mostrar pelo menos <strong>3 linhas</strong> diferentes na saída.</p>
+      <div class="code-block pseudo-block">
+        <div class="code-head">
+          <div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+          <span class="file">desafio01.pseudo</span>
+        </div>
+        <textarea class="editor pseudo-ed" id="ce0" spellcheck="false">ALGORITMO "Desafio01"
+VAR
+   mensagem : CARACTERE
+
+INÍCIO
+   mensagem <- "Escreva algo aqui"
+   ESCREVA(mensagem)
+   // adicione mais dois ESCREVA abaixo
+
+FIM</textarea>
+        <div class="code-foot">
+          <button class="btn-run" onclick="checkChallenge(0)">▶ Executar e Verificar</button>
+          <button class="btn-reset" onclick="resetChallenge(0)">↺ Resetar</button>
+        </div>
+        <div class="output" id="co0"></div>
+      </div>
+      <div class="c-result" id="cr0"></div>
+    </div>
+    <button class="next-btn" id="next-0" onclick="advance(0)" disabled>Próximo módulo →</button>
+  </div>
+
+  <!-- ═══════════════════════════════════════ MÓDULO 1 -->
+  <div class="module" id="module-1">
+    <h2 class="mod-title">📦 Variáveis e Tipos de Dados</h2>
+    <p class="mod-sub">Guardar informações na memória do computador.</p>
+
+    <div class="card">
+      <h3>O que é uma variável?</h3>
+      <p>Uma variável é um espaço na memória com um nome e um tipo definido. O tipo diz ao computador quanto espaço reservar e que tipo de dado guardar lá dentro.</p>
+      <div class="analogy">💬 Pense em variáveis como gavetas etiquetadas. A etiqueta é o nome e o tipo define o tamanho da gaveta — uma gaveta de inteiros não cabe texto!</div>
+    </div>
+
+    <div class="card">
+      <h3>Tipos de dados nas três linguagens</h3>
+      <table class="syntax-table">
+        <thead>
+          <tr><th>Tipo</th><th>📋 Pseudolinguagem</th><th>🔷 C#</th><th>☕ Java</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Número inteiro</td><td>INTEIRO</td><td>int</td><td>int</td></tr>
+          <tr><td>Número decimal</td><td>REAL</td><td>double</td><td>double</td></tr>
+          <tr><td>Texto</td><td>CARACTERE</td><td>string</td><td>String</td></tr>
+          <tr><td>Verdadeiro/Falso</td><td>LÓGICO</td><td>bool</td><td>boolean</td></tr>
+          <tr><td>Um caractere</td><td>CARACTERE</td><td>char</td><td>char</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="lang-tabs" id="tabs-1">
+      <div class="ltab active pseudo" onclick="switchTab('tabs-1','blk-1',0)">📋 Pseudolinguagem</div>
+      <div class="ltab csharp"        onclick="switchTab('tabs-1','blk-1',1)">🔷 C#</div>
+      <div class="ltab java"          onclick="switchTab('tabs-1','blk-1',2)">☕ Java</div>
+    </div>
+    <div id="blk-1">
+      <div class="code-block pseudo-block" data-tab="blk-1" data-idx="0">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">variaveis.pseudo</span></div>
+        <textarea class="editor pseudo-ed" id="e1-0" spellcheck="false">ALGORITMO "Variaveis"
+VAR
+   nome    : CARACTERE
+   idade   : INTEIRO
+   altura  : REAL
+   ativo   : LÓGICO
+
+INÍCIO
+   nome   <- "Carlos"
+   idade  <- 17
+   altura <- 1.75
+   ativo  <- VERDADEIRO
+
+   ESCREVA("Nome: ", nome)
+   ESCREVA("Idade: ", idade)
+   ESCREVA("Altura: ", altura, " m")
+   ESCREVA("Ativo: ", ativo)
+FIM</textarea>
+        <div class="code-foot">
+          <button class="btn-run" onclick="runPseudo('e1-0','o1-0')">▶ Executar</button>
+          <button class="btn-reset" onclick="resetEditor('e1-0')">↺ Resetar</button>
+        </div>
+        <div class="output" id="o1-0"></div>
+      </div>
+
+      <div class="code-block csharp-block" data-tab="blk-1" data-idx="1" style="display:none">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">Variaveis.cs</span></div>
+        <textarea class="editor csharp-ed" spellcheck="false" readonly>using System;
+
+class Program {
+    static void Main() {
+        string  nome   = "Carlos";
+        int     idade  = 17;
+        double  altura = 1.75;
+        bool    ativo  = true;
+
+        Console.WriteLine("Nome: "   + nome);
+        Console.WriteLine("Idade: "  + idade);
+        Console.WriteLine("Altura: " + altura + " m");
+        Console.WriteLine("Ativo: "  + ativo);
+    }
+}</textarea>
+        <div class="code-foot" style="justify-content:flex-end"><span class="readonly-note">📖 Somente leitura — C# requer compilador</span></div>
+      </div>
+
+      <div class="code-block java-block" data-tab="blk-1" data-idx="2" style="display:none">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">Variaveis.java</span></div>
+        <textarea class="editor java-ed" spellcheck="false" readonly>public class Variaveis {
+    public static void main(String[] args) {
+        String  nome   = "Carlos";
+        int     idade  = 17;
+        double  altura = 1.75;
+        boolean ativo  = true;
+
+        System.out.println("Nome: "   + nome);
+        System.out.println("Idade: "  + idade);
+        System.out.println("Altura: " + altura + " m");
+        System.out.println("Ativo: "  + ativo);
+    }
+}</textarea>
+        <div class="code-foot" style="justify-content:flex-end"><span class="readonly-note">📖 Somente leitura — Java requer compilador</span></div>
+      </div>
+    </div>
+
+    <div class="challenge">
+      <div class="challenge-tag">🎯 Desafio 2</div>
+      <h3>Cadastro de produto</h3>
+      <p>Declare as variáveis <code>produto</code> (CARACTERE), <code>preco</code> (REAL), <code>quantidade</code> (INTEIRO) e <code>disponivel</code> (LÓGICO). Atribua valores e mostre todos com ESCREVA.</p>
+      <div class="code-block pseudo-block">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">desafio02.pseudo</span></div>
+        <textarea class="editor pseudo-ed" id="ce1" spellcheck="false">ALGORITMO "Cadastro"
+VAR
+   produto    : CARACTERE
+   preco      : REAL
+   quantidade : INTEIRO
+   disponivel : LÓGICO
+
+INÍCIO
+   // atribua valores e mostre com ESCREVA
+
+FIM</textarea>
+        <div class="code-foot">
+          <button class="btn-run" onclick="checkChallenge(1)">▶ Executar e Verificar</button>
+          <button class="btn-reset" onclick="resetChallenge(1)">↺ Resetar</button>
+        </div>
+        <div class="output" id="co1"></div>
+      </div>
+      <div class="c-result" id="cr1"></div>
+    </div>
+    <button class="next-btn" id="next-1" onclick="advance(1)" disabled>Próximo módulo →</button>
+  </div>
+
+  <!-- ═══════════════════════════════════════ MÓDULO 2 -->
+  <div class="module" id="module-2">
+    <h2 class="mod-title">📡 Entrada e Saída de Dados</h2>
+    <p class="mod-sub">Como o programa recebe e exibe informações.</p>
+
+    <div class="card">
+      <h3>Lendo dados do usuário</h3>
+      <p>Com <code>LEIA</code> o programa espera uma entrada. No simulador, use <code>LEIA(variavel : valor)</code> para simular o que o usuário digitaria. Em C# usa-se <code>Console.ReadLine()</code> e em Java o <code>Scanner</code>.</p>
+    </div>
+
+    <div class="card">
+      <h3>Tabela de comandos de E/S</h3>
+      <table class="syntax-table">
+        <thead>
+          <tr><th>Operação</th><th>📋 Pseudo</th><th>🔷 C#</th><th>☕ Java</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Imprimir com quebra</td><td>ESCREVA()</td><td>Console.WriteLine()</td><td>System.out.println()</td></tr>
+          <tr><td>Imprimir sem quebra</td><td>ESCREVA_SEM_QUEBRA()</td><td>Console.Write()</td><td>System.out.print()</td></tr>
+          <tr><td>Ler texto</td><td>LEIA(x : "valor")</td><td>Console.ReadLine()</td><td>sc.nextLine()</td></tr>
+          <tr><td>Ler inteiro</td><td>LEIA(x : 10)</td><td>int.Parse(Console.ReadLine())</td><td>sc.nextInt()</td></tr>
+          <tr><td>Ler decimal</td><td>LEIA(x : 3.14)</td><td>double.Parse(Console.ReadLine())</td><td>sc.nextDouble()</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="lang-tabs" id="tabs-2">
+      <div class="ltab active pseudo" onclick="switchTab('tabs-2','blk-2',0)">📋 Pseudolinguagem</div>
+      <div class="ltab csharp"        onclick="switchTab('tabs-2','blk-2',1)">🔷 C#</div>
+      <div class="ltab java"          onclick="switchTab('tabs-2','blk-2',2)">☕ Java</div>
+    </div>
+    <div id="blk-2">
+      <div class="code-block pseudo-block" data-tab="blk-2" data-idx="0">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">entradaSaida.pseudo</span></div>
+        <textarea class="editor pseudo-ed" id="e2-0" spellcheck="false">ALGORITMO "EntradaSaida"
+VAR
+   nome  : CARACTERE
+   idade : INTEIRO
+   media : REAL
+
+INÍCIO
+   ESCREVA("Digite seu nome: ")
+   LEIA(nome : "Ana")
+
+   ESCREVA("Digite sua idade: ")
+   LEIA(idade : 15)
+
+   ESCREVA("Digite sua média: ")
+   LEIA(media : 8.5)
+
+   ESCREVA("--- Dados recebidos ---")
+   ESCREVA("Nome: ", nome)
+   ESCREVA("Idade: ", idade, " anos")
+   ESCREVA("Média: ", media)
+FIM</textarea>
+        <div class="code-foot">
+          <button class="btn-run" onclick="runPseudo('e2-0','o2-0')">▶ Executar</button>
+          <button class="btn-reset" onclick="resetEditor('e2-0')">↺ Resetar</button>
+        </div>
+        <div class="output" id="o2-0"></div>
+      </div>
+
+      <div class="code-block csharp-block" data-tab="blk-2" data-idx="1" style="display:none">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">EntradaSaida.cs</span></div>
+        <textarea class="editor csharp-ed" spellcheck="false" readonly>using System;
+
+class Program {
+    static void Main() {
+        Console.Write("Digite seu nome: ");
+        string nome = Console.ReadLine();
+
+        Console.Write("Digite sua idade: ");
+        int idade = int.Parse(Console.ReadLine());
+
+        Console.Write("Digite sua média: ");
+        double media = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("--- Dados recebidos ---");
+        Console.WriteLine("Nome: "   + nome);
+        Console.WriteLine("Idade: "  + idade + " anos");
+        Console.WriteLine("Média: "  + media);
+    }
+}</textarea>
+        <div class="code-foot" style="justify-content:flex-end"><span class="readonly-note">📖 Somente leitura</span></div>
+      </div>
+
+      <div class="code-block java-block" data-tab="blk-2" data-idx="2" style="display:none">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">EntradaSaida.java</span></div>
+        <textarea class="editor java-ed" spellcheck="false" readonly>import java.util.Scanner;
+
+public class EntradaSaida {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Digite seu nome: ");
+        String nome = sc.nextLine();
+
+        System.out.print("Digite sua idade: ");
+        int idade = sc.nextInt();
+
+        System.out.print("Digite sua média: ");
+        double media = sc.nextDouble();
+
+        System.out.println("--- Dados recebidos ---");
+        System.out.println("Nome: "  + nome);
+        System.out.println("Idade: " + idade + " anos");
+        System.out.println("Média: " + media);
+    }
+}</textarea>
+        <div class="code-foot" style="justify-content:flex-end"><span class="readonly-note">📖 Somente leitura</span></div>
+      </div>
+    </div>
+
+    <div class="challenge">
+      <div class="challenge-tag">🎯 Desafio 3</div>
+      <h3>Calculadora de desconto</h3>
+      <p>Leia o preço de um produto e o percentual de desconto. Calcule <code>valorDesc = preco * desconto / 100</code> e <code>precoFinal = preco - valorDesc</code>. Mostre os três valores.</p>
+      <div class="code-block pseudo-block">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">desafio03.pseudo</span></div>
+        <textarea class="editor pseudo-ed" id="ce2" spellcheck="false">ALGORITMO "Desconto"
+VAR
+   preco      : REAL
+   desconto   : REAL
+   valorDesc  : REAL
+   precoFinal : REAL
+
+INÍCIO
+   LEIA(preco : 100.0)
+   LEIA(desconto : 15.0)
+
+   valorDesc  <- preco * desconto / 100
+   precoFinal <- preco - valorDesc
+
+   ESCREVA("Preço original: ", preco)
+   ESCREVA("Desconto: ", valorDesc)
+   ESCREVA("Preço final: ", precoFinal)
+FIM</textarea>
+        <div class="code-foot">
+          <button class="btn-run" onclick="checkChallenge(2)">▶ Executar e Verificar</button>
+          <button class="btn-reset" onclick="resetChallenge(2)">↺ Resetar</button>
+        </div>
+        <div class="output" id="co2"></div>
+      </div>
+      <div class="c-result" id="cr2"></div>
+    </div>
+    <button class="next-btn" id="next-2" onclick="advance(2)" disabled>Próximo módulo →</button>
+  </div>
+
+  <!-- ═══════════════════════════════════════ MÓDULO 3 -->
+  <div class="module" id="module-3">
+    <h2 class="mod-title">🔀 Estruturas Condicionais</h2>
+    <p class="mod-sub">Tomar decisões dentro do programa.</p>
+
+    <div class="card">
+      <h3>SE... ENTÃO... SENÃO</h3>
+      <p>A estrutura condicional executa um bloco de código somente se uma condição for verdadeira, e outro bloco caso contrário.</p>
+      <div class="analogy">💬 "SE a nota for maior ou igual a 7, ENTÃO aprovado, SENÃO em recuperação." Isso é uma condicional da vida real!</div>
+    </div>
+
+    <div class="card">
+      <h3>Operadores de comparação</h3>
+      <table class="syntax-table">
+        <thead>
+          <tr><th>Operação</th><th>📋 Pseudo</th><th>🔷 C#</th><th>☕ Java</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Igual a</td><td>=</td><td>==</td><td>==</td></tr>
+          <tr><td>Diferente de</td><td><></td><td>!=</td><td>!=</td></tr>
+          <tr><td>Maior que</td><td>></td><td>></td><td>></td></tr>
+          <tr><td>Menor que</td><td><</td><td><</td><td><</td></tr>
+          <tr><td>Maior ou igual</td><td>>=</td><td>>=</td><td>>=</td></tr>
+          <tr><td>Menor ou igual</td><td><=</td><td><=</td><td><=</td></tr>
+          <tr><td>E lógico</td><td>E</td><td>&&</td><td>&&</td></tr>
+          <tr><td>Ou lógico</td><td>OU</td><td>||</td><td>||</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="lang-tabs" id="tabs-3">
+      <div class="ltab active pseudo" onclick="switchTab('tabs-3','blk-3',0)">📋 Pseudolinguagem</div>
+      <div class="ltab csharp"        onclick="switchTab('tabs-3','blk-3',1)">🔷 C#</div>
+      <div class="ltab java"          onclick="switchTab('tabs-3','blk-3',2)">☕ Java</div>
+    </div>
+    <div id="blk-3">
+      <div class="code-block pseudo-block" data-tab="blk-3" data-idx="0">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">condicional.pseudo</span></div>
+        <textarea class="editor pseudo-ed" id="e3-0" spellcheck="false">ALGORITMO "Notas"
+VAR
+   nota : REAL
+
+INÍCIO
+   LEIA(nota : 6.5)
+
+   SE nota >= 7 ENTÃO
+      ESCREVA("Aprovado(a)! Nota: ", nota)
+   SENÃO SE nota >= 5 ENTÃO
+      ESCREVA("Recuperação. Nota: ", nota)
+   SENÃO
+      ESCREVA("Reprovado(a). Nota: ", nota)
+   FIM_SE
+
+   // Troque o valor em LEIA e execute novamente!
+FIM</textarea>
+        <div class="code-foot">
+          <button class="btn-run" onclick="runPseudo('e3-0','o3-0')">▶ Executar</button>
+          <button class="btn-reset" onclick="resetEditor('e3-0')">↺ Resetar</button>
+        </div>
+        <div class="output" id="o3-0"></div>
+      </div>
+
+      <div class="code-block csharp-block" data-tab="blk-3" data-idx="1" style="display:none">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">Notas.cs</span></div>
+        <textarea class="editor csharp-ed" spellcheck="false" readonly>using System;
+
+class Program {
+    static void Main() {
+        double nota = 6.5;
+
+        if (nota >= 7) {
+            Console.WriteLine("Aprovado(a)! Nota: " + nota);
+        } else if (nota >= 5) {
+            Console.WriteLine("Recuperação. Nota: " + nota);
+        } else {
+            Console.WriteLine("Reprovado(a). Nota: " + nota);
+        }
+    }
+}</textarea>
+        <div class="code-foot" style="justify-content:flex-end"><span class="readonly-note">📖 Somente leitura</span></div>
+      </div>
+
+      <div class="code-block java-block" data-tab="blk-3" data-idx="2" style="display:none">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">Notas.java</span></div>
+        <textarea class="editor java-ed" spellcheck="false" readonly>public class Notas {
+    public static void main(String[] args) {
+        double nota = 6.5;
+
+        if (nota >= 7) {
+            System.out.println("Aprovado(a)! Nota: " + nota);
+        } else if (nota >= 5) {
+            System.out.println("Recuperação. Nota: " + nota);
+        } else {
+            System.out.println("Reprovado(a). Nota: " + nota);
+        }
+    }
+}</textarea>
+        <div class="code-foot" style="justify-content:flex-end"><span class="readonly-note">📖 Somente leitura</span></div>
+      </div>
+    </div>
+
+    <div class="challenge">
+      <div class="challenge-tag">🎯 Desafio 4</div>
+      <h3>Classificador de IMC</h3>
+      <p>Leia peso e altura, calcule o IMC (<code>peso / (altura * altura)</code>) e classifique: abaixo de 18.5 = "Abaixo do peso", de 18.5 a 24.9 = "Peso normal", de 25 a 29.9 = "Sobrepeso", acima de 30 = "Obesidade".</p>
+      <div class="code-block pseudo-block">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">desafio04.pseudo</span></div>
+        <textarea class="editor pseudo-ed" id="ce3" spellcheck="false">ALGORITMO "IMC"
+VAR
+   peso   : REAL
+   altura : REAL
+   imc    : REAL
+
+INÍCIO
+   LEIA(peso : 70.0)
+   LEIA(altura : 1.75)
+
+   imc <- peso / (altura * altura)
+   ESCREVA("IMC calculado: ", imc)
+
+   SE imc < 18.5 ENTÃO
+      ESCREVA("Classificação: Abaixo do peso")
+   SENÃO SE imc < 25 ENTÃO
+      ESCREVA("Classificação: Peso normal")
+   SENÃO SE imc < 30 ENTÃO
+      ESCREVA("Classificação: Sobrepeso")
+   SENÃO
+      ESCREVA("Classificação: Obesidade")
+   FIM_SE
+FIM</textarea>
+        <div class="code-foot">
+          <button class="btn-run" onclick="checkChallenge(3)">▶ Executar e Verificar</button>
+          <button class="btn-reset" onclick="resetChallenge(3)">↺ Resetar</button>
+        </div>
+        <div class="output" id="co3"></div>
+      </div>
+      <div class="c-result" id="cr3"></div>
+    </div>
+    <button class="next-btn" id="next-3" onclick="advance(3)" disabled>Próximo módulo →</button>
+  </div>
+
+  <!-- ═══════════════════════════════════════ MÓDULO 4 -->
+  <div class="module" id="module-4">
+    <h2 class="mod-title">🔁 Estruturas de Repetição</h2>
+    <p class="mod-sub">Repetir ações sem reescrever o mesmo código.</p>
+
+    <div class="card">
+      <h3>PARA — repetição com contador</h3>
+      <p>Use quando você sabe exatamente quantas vezes repetir. O contador começa em um valor e vai até outro, incrementando a cada iteração.</p>
+      <div class="analogy">💬 "Para cada aluno da lista, de 1 até 30, faça a chamada." O número de repetições é definido antes de começar.</div>
+    </div>
+
+    <div class="lang-tabs" id="tabs-4a">
+      <div class="ltab active pseudo" onclick="switchTab('tabs-4a','blk-4a',0)">📋 Pseudolinguagem</div>
+      <div class="ltab csharp"        onclick="switchTab('tabs-4a','blk-4a',1)">🔷 C#</div>
+      <div class="ltab java"          onclick="switchTab('tabs-4a','blk-4a',2)">☕ Java</div>
+    </div>
+    <div id="blk-4a">
+      <div class="code-block pseudo-block" data-tab="blk-4a" data-idx="0">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">tabuada.pseudo</span></div>
+        <textarea class="editor pseudo-ed" id="e4-0" spellcheck="false">ALGORITMO "Tabuada"
+VAR
+   n : INTEIRO
+   i : INTEIRO
+
+INÍCIO
+   LEIA(n : 7)
+   ESCREVA("--- Tabuada do ", n, " ---")
+
+   PARA i DE 1 ATÉ 10 FAÇA
+      ESCREVA(n, " x ", i, " = ", n * i)
+   FIM_PARA
+FIM</textarea>
+        <div class="code-foot">
+          <button class="btn-run" onclick="runPseudo('e4-0','o4-0')">▶ Executar</button>
+          <button class="btn-reset" onclick="resetEditor('e4-0')">↺ Resetar</button>
+        </div>
+        <div class="output" id="o4-0"></div>
+      </div>
+      <div class="code-block csharp-block" data-tab="blk-4a" data-idx="1" style="display:none">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">Tabuada.cs</span></div>
+        <textarea class="editor csharp-ed" spellcheck="false" readonly>using System;
+
+class Program {
+    static void Main() {
+        int n = 7;
+        Console.WriteLine("--- Tabuada do " + n + " ---");
+
+        for (int i = 1; i <= 10; i++) {
+            Console.WriteLine(n + " x " + i + " = " + (n * i));
+        }
+    }
+}</textarea>
+        <div class="code-foot" style="justify-content:flex-end"><span class="readonly-note">📖 Somente leitura</span></div>
+      </div>
+      <div class="code-block java-block" data-tab="blk-4a" data-idx="2" style="display:none">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">Tabuada.java</span></div>
+        <textarea class="editor java-ed" spellcheck="false" readonly>public class Tabuada {
+    public static void main(String[] args) {
+        int n = 7;
+        System.out.println("--- Tabuada do " + n + " ---");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(n + " x " + i + " = " + (n * i));
+        }
+    }
+}</textarea>
+        <div class="code-foot" style="justify-content:flex-end"><span class="readonly-note">📖 Somente leitura</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>ENQUANTO — repetição com condição</h3>
+      <p>Use quando não sabe quantas vezes repetir — a repetição continua enquanto uma condição for verdadeira.</p>
+    </div>
+
+    <div class="lang-tabs" id="tabs-4b">
+      <div class="ltab active pseudo" onclick="switchTab('tabs-4b','blk-4b',0)">📋 Pseudolinguagem</div>
+      <div class="ltab csharp"        onclick="switchTab('tabs-4b','blk-4b',1)">🔷 C#</div>
+      <div class="ltab java"          onclick="switchTab('tabs-4b','blk-4b',2)">☕ Java</div>
+    </div>
+    <div id="blk-4b">
+      <div class="code-block pseudo-block" data-tab="blk-4b" data-idx="0">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">enquanto.pseudo</span></div>
+        <textarea class="editor pseudo-ed" id="e4-1" spellcheck="false">ALGORITMO "Contador"
+VAR
+   contador : INTEIRO
+   limite   : INTEIRO
+
+INÍCIO
+   LEIA(limite : 5)
+   contador <- 1
+
+   ENQUANTO contador <= limite FAÇA
+      ESCREVA("Contagem: ", contador)
+      contador <- contador + 1
+   FIM_ENQUANTO
+
+   ESCREVA("Fim da contagem!")
+FIM</textarea>
+        <div class="code-foot">
+          <button class="btn-run" onclick="runPseudo('e4-1','o4-1')">▶ Executar</button>
+          <button class="btn-reset" onclick="resetEditor('e4-1')">↺ Resetar</button>
+        </div>
+        <div class="output" id="o4-1"></div>
+      </div>
+      <div class="code-block csharp-block" data-tab="blk-4b" data-idx="1" style="display:none">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">Contador.cs</span></div>
+        <textarea class="editor csharp-ed" spellcheck="false" readonly>using System;
+
+class Program {
+    static void Main() {
+        int limite   = 5;
+        int contador = 1;
+
+        while (contador <= limite) {
+            Console.WriteLine("Contagem: " + contador);
+            contador++;
+        }
+        Console.WriteLine("Fim da contagem!");
+    }
+}</textarea>
+        <div class="code-foot" style="justify-content:flex-end"><span class="readonly-note">📖 Somente leitura</span></div>
+      </div>
+      <div class="code-block java-block" data-tab="blk-4b" data-idx="2" style="display:none">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">Contador.java</span></div>
+        <textarea class="editor java-ed" spellcheck="false" readonly>public class Contador {
+    public static void main(String[] args) {
+        int limite   = 5;
+        int contador = 1;
+
+        while (contador <= limite) {
+            System.out.println("Contagem: " + contador);
+            contador++;
+        }
+        System.out.println("Fim da contagem!");
+    }
+}</textarea>
+        <div class="code-foot" style="justify-content:flex-end"><span class="readonly-note">📖 Somente leitura</span></div>
+      </div>
+    </div>
+
+    <div class="challenge">
+      <div class="challenge-tag">🎯 Desafio 5</div>
+      <h3>Números pares</h3>
+      <p>Use um laço <code>PARA</code> de 1 até 20 e um <code>SE</code> para mostrar somente os números pares. Um número é par quando o resto da divisão por 2 é igual a 0. Use o operador <code>MOD</code> (ex: <code>i MOD 2 = 0</code>).</p>
+      <div class="code-block pseudo-block">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">desafio05.pseudo</span></div>
+        <textarea class="editor pseudo-ed" id="ce4" spellcheck="false">ALGORITMO "Pares"
+VAR
+   i : INTEIRO
+
+INÍCIO
+   ESCREVA("Números pares de 1 a 20:")
+
+   PARA i DE 1 ATÉ 20 FAÇA
+      SE i MOD 2 = 0 ENTÃO
+         ESCREVA(i)
+      FIM_SE
+   FIM_PARA
+FIM</textarea>
+        <div class="code-foot">
+          <button class="btn-run" onclick="checkChallenge(4)">▶ Executar e Verificar</button>
+          <button class="btn-reset" onclick="resetChallenge(4)">↺ Resetar</button>
+        </div>
+        <div class="output" id="co4"></div>
+      </div>
+      <div class="c-result" id="cr4"></div>
+    </div>
+    <button class="next-btn" id="next-4" onclick="advance(4)" disabled>Próximo módulo →</button>
+  </div>
+
+  <!-- ═══════════════════════════════════════ MÓDULO 5 -->
+  <div class="module" id="module-5">
+    <h2 class="mod-title">📊 Vetores (Arrays)</h2>
+    <p class="mod-sub">Armazenar múltiplos valores em uma única variável.</p>
+
+    <div class="card">
+      <h3>O que é um vetor?</h3>
+      <p>Um vetor (array) é uma coleção de variáveis do mesmo tipo, acessadas por um índice numérico. Em vez de criar dez variáveis separadas, você cria um vetor com dez posições.</p>
+      <div class="analogy">💬 Pense em um vetor como uma fileira de cadeiras numeradas. Cada cadeira guarda um valor e você a acessa pelo seu número.</div>
+    </div>
+
+    <div class="card">
+      <h3>Declaração e acesso em cada linguagem</h3>
+      <table class="syntax-table">
+        <thead>
+          <tr><th>Operação</th><th>📋 Pseudo</th><th>🔷 C#</th><th>☕ Java</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Declarar vetor</td><td>v : VETOR[1..5] DE INTEIRO</td><td>int[] v = new int[5];</td><td>int[] v = new int[5];</td></tr>
+          <tr><td>Atribuir valor</td><td>v[1] <- 10</td><td>v[0] = 10;</td><td>v[0] = 10;</td></tr>
+          <tr><td>Acessar valor</td><td>ESCREVA(v[1])</td><td>Console.WriteLine(v[0]);</td><td>System.out.println(v[0]);</td></tr>
+          <tr><td>Tamanho</td><td>—</td><td>v.Length</td><td>v.length</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px;font-size:.85rem;color:var(--yellow);">⚠️ Atenção: em pseudocódigo o índice começa em 1. Em C# e Java, começa em 0!</p>
+    </div>
+
+    <div class="lang-tabs" id="tabs-5">
+      <div class="ltab active pseudo" onclick="switchTab('tabs-5','blk-5',0)">📋 Pseudolinguagem</div>
+      <div class="ltab csharp"        onclick="switchTab('tabs-5','blk-5',1)">🔷 C#</div>
+      <div class="ltab java"          onclick="switchTab('tabs-5','blk-5',2)">☕ Java</div>
+    </div>
+    <div id="blk-5">
+      <div class="code-block pseudo-block" data-tab="blk-5" data-idx="0">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">vetor.pseudo</span></div>
+        <textarea class="editor pseudo-ed" id="e5-0" spellcheck="false">ALGORITMO "Vetor"
+VAR
+   notas : VETOR[1..5] DE REAL
+   i     : INTEIRO
+   soma  : REAL
+   media : REAL
+
+INÍCIO
+   notas[1] <- 7.0
+   notas[2] <- 8.5
+   notas[3] <- 6.0
+   notas[4] <- 9.0
+   notas[5] <- 7.5
+
+   soma <- 0
+   PARA i DE 1 ATÉ 5 FAÇA
+      soma <- soma + notas[i]
+   FIM_PARA
+
+   media <- soma / 5
+   ESCREVA("Soma: ", soma)
+   ESCREVA("Média da turma: ", media)
+FIM</textarea>
+        <div class="code-foot">
+          <button class="btn-run" onclick="runPseudo('e5-0','o5-0')">▶ Executar</button>
+          <button class="btn-reset" onclick="resetEditor('e5-0')">↺ Resetar</button>
+        </div>
+        <div class="output" id="o5-0"></div>
+      </div>
+      <div class="code-block csharp-block" data-tab="blk-5" data-idx="1" style="display:none">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">Vetor.cs</span></div>
+        <textarea class="editor csharp-ed" spellcheck="false" readonly>using System;
+
+class Program {
+    static void Main() {
+        double[] notas = { 7.0, 8.5, 6.0, 9.0, 7.5 };
+        double soma = 0;
+
+        for (int i = 0; i < notas.Length; i++) {
+            soma += notas[i];
+        }
+
+        double media = soma / notas.Length;
+        Console.WriteLine("Soma: "  + soma);
+        Console.WriteLine("Média: " + media);
+    }
+}</textarea>
+        <div class="code-foot" style="justify-content:flex-end"><span class="readonly-note">📖 Somente leitura</span></div>
+      </div>
+      <div class="code-block java-block" data-tab="blk-5" data-idx="2" style="display:none">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">Vetor.java</span></div>
+        <textarea class="editor java-ed" spellcheck="false" readonly>public class Vetor {
+    public static void main(String[] args) {
+        double[] notas = { 7.0, 8.5, 6.0, 9.0, 7.5 };
+        double soma = 0;
+
+        for (int i = 0; i < notas.length; i++) {
+            soma += notas[i];
+        }
+
+        double media = soma / notas.length;
+        System.out.println("Soma: "  + soma);
+        System.out.println("Média: " + media);
+    }
+}</textarea>
+        <div class="code-foot" style="justify-content:flex-end"><span class="readonly-note">📖 Somente leitura</span></div>
+      </div>
+    </div>
+
+    <div class="challenge">
+      <div class="challenge-tag">🎯 Desafio 6</div>
+      <h3>Encontre o maior valor</h3>
+      <p>Crie um vetor com 5 números inteiros, percorra-o com um laço e encontre o maior valor. Dica: guarde o primeiro elemento em <code>maior</code> e compare com cada elemento do vetor.</p>
+      <div class="code-block pseudo-block">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">desafio06.pseudo</span></div>
+        <textarea class="editor pseudo-ed" id="ce5" spellcheck="false">ALGORITMO "MaiorValor"
+VAR
+   v     : VETOR[1..5] DE INTEIRO
+   i     : INTEIRO
+   maior : INTEIRO
+
+INÍCIO
+   v[1] <- 12
+   v[2] <- 45
+   v[3] <- 7
+   v[4] <- 30
+   v[5] <- 22
+
+   maior <- v[1]
+
+   PARA i DE 2 ATÉ 5 FAÇA
+      SE v[i] > maior ENTÃO
+         maior <- v[i]
+      FIM_SE
+   FIM_PARA
+
+   ESCREVA("Maior valor encontrado: ", maior)
+FIM</textarea>
+        <div class="code-foot">
+          <button class="btn-run" onclick="checkChallenge(5)">▶ Executar e Verificar</button>
+          <button class="btn-reset" onclick="resetChallenge(5)">↺ Resetar</button>
+        </div>
+        <div class="output" id="co5"></div>
+      </div>
+      <div class="c-result" id="cr5"></div>
+    </div>
+    <button class="next-btn" id="next-5" onclick="advance(5)" disabled>Próximo módulo →</button>
+  </div>
+
+  <!-- ═══════════════════════════════════════ MÓDULO 6 -->
+  <div class="module" id="module-6">
+    <h2 class="mod-title">⚙️ Funções e Métodos</h2>
+    <p class="mod-sub">Criar blocos de código reutilizáveis com nome próprio.</p>
+
+    <div class="card">
+      <h3>O que é uma função?</h3>
+      <p>Uma função é um bloco de código com um nome. Você define ela uma vez e pode chamar quantas vezes quiser, passando dados de entrada (parâmetros) e recebendo um resultado de saída (retorno).</p>
+      <div class="analogy">💬 Pense em uma função como uma máquina de café. Você coloca os ingredientes (parâmetros), ela processa e te devolve o café (retorno). Você não precisa refazer a máquina toda vez!</div>
+    </div>
+
+    <div class="card">
+      <h3>Sintaxe de funções nas três linguagens</h3>
+      <table class="syntax-table">
+        <thead>
+          <tr><th>Elemento</th><th>📋 Pseudo</th><th>🔷 C#</th><th>☕ Java</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Definir função</td><td>FUNÇÃO nome(param) : TIPO</td><td>static tipo nome(tipo param)</td><td>static tipo nome(tipo param)</td></tr>
+          <tr><td>Retornar valor</td><td>RETORNE valor</td><td>return valor;</td><td>return valor;</td></tr>
+          <tr><td>Chamar função</td><td>resultado <- nome(arg)</td><td>var r = nome(arg);</td><td>tipo r = nome(arg);</td></tr>
+          <tr><td>Sem retorno</td><td>PROCEDIMENTO nome()</td><td>static void nome()</td><td>static void nome()</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="lang-tabs" id="tabs-6">
+      <div class="ltab active pseudo" onclick="switchTab('tabs-6','blk-6',0)">📋 Pseudolinguagem</div>
+      <div class="ltab csharp"        onclick="switchTab('tabs-6','blk-6',1)">🔷 C#</div>
+      <div class="ltab java"          onclick="switchTab('tabs-6','blk-6',2)">☕ Java</div>
+    </div>
+    <div id="blk-6">
+      <div class="code-block pseudo-block" data-tab="blk-6" data-idx="0">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">funcao.pseudo</span></div>
+        <textarea class="editor pseudo-ed" id="e6-0" spellcheck="false">ALGORITMO "Funcoes"
+VAR
+   area1 : REAL
+   area2 : REAL
+
+FUNÇÃO calcularArea(base : REAL, altura : REAL) : REAL
+INÍCIO
+   RETORNE base * altura / 2
+FIM_FUNÇÃO
+
+PROCEDIMENTO exibirResultado(valor : REAL)
+INÍCIO
+   ESCREVA("Área calculada: ", valor)
+FIM_PROCEDIMENTO
+
+INÍCIO
+   area1 <- calcularArea(6.0, 4.0)
+   area2 <- calcularArea(10.0, 3.0)
+
+   exibirResultado(area1)
+   exibirResultado(area2)
+   ESCREVA("Soma das áreas: ", area1 + area2)
+FIM</textarea>
+        <div class="code-foot">
+          <button class="btn-run" onclick="runPseudo('e6-0','o6-0')">▶ Executar</button>
+          <button class="btn-reset" onclick="resetEditor('e6-0')">↺ Resetar</button>
+        </div>
+        <div class="output" id="o6-0"></div>
+      </div>
+      <div class="code-block csharp-block" data-tab="blk-6" data-idx="1" style="display:none">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">Funcoes.cs</span></div>
+        <textarea class="editor csharp-ed" spellcheck="false" readonly>using System;
+
+class Program {
+    static double CalcularArea(double base_, double altura) {
+        return base_ * altura / 2;
+    }
+
+    static void ExibirResultado(double valor) {
+        Console.WriteLine("Área calculada: " + valor);
+    }
+
+    static void Main() {
+        double area1 = CalcularArea(6.0, 4.0);
+        double area2 = CalcularArea(10.0, 3.0);
+
+        ExibirResultado(area1);
+        ExibirResultado(area2);
+        Console.WriteLine("Soma das áreas: " + (area1 + area2));
+    }
+}</textarea>
+        <div class="code-foot" style="justify-content:flex-end"><span class="readonly-note">📖 Somente leitura</span></div>
+      </div>
+      <div class="code-block java-block" data-tab="blk-6" data-idx="2" style="display:none">
+        <div class="code-head"><div class="dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="file">Funcoes.java</span></div>
+        <textarea class="editor java-ed" spellcheck="false" readonly>public class Funcoes {
+    static double calcularArea(double base_, double altura) {
+        return base_ * altura / 2;
+    }
+
+    static void exibirResultado(double valor) {
+        System.out.println("Área calculada: " + valor);
+    }
+
+    public static void main(String[]
+

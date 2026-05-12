@@ -1,0 +1,81 @@
+# ==========================================
+# .htaccess — Configuração Hostgator
+# ==========================================
+
+Options -Indexes
+
+# Página inicial
+DirectoryIndex index.html
+
+# Charset padrão
+AddDefaultCharset UTF-8
+
+# ── MIME Types ──────────────────────────────
+AddType text/html             .html .htm
+AddType text/css              .css
+AddType application/javascript .js
+AddType image/svg+xml         .svg
+AddType image/x-icon          .ico
+AddType image/png             .png
+AddType image/jpeg            .jpg .jpeg
+AddType image/webp            .webp
+AddType application/font-woff2 .woff2
+
+# ── Compressão GZIP ─────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ── Cache do navegador ───────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html             "access plus 1 hour"
+  ExpiresByType text/css              "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/png             "access plus 6 months"
+  ExpiresByType image/jpeg            "access plus 6 months"
+  ExpiresByType image/svg+xml         "access plus 6 months"
+  ExpiresByType image/x-icon          "access plus 1 year"
+</IfModule>
+
+# ── Cache headers extras ─────────────────────
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.(png|jpg|jpeg|svg|ico|webp)$">
+    Header set Cache-Control "public, max-age=15552000"
+  </FilesMatch>
+</IfModule>
+
+# ── Segurança básica ─────────────────────────
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ── Protege arquivos sensíveis ───────────────
+<FilesMatch "(^#.*#|\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)|~)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# ── Redireciona www → sem www (opcional) ────
+# Descomente abaixo se quiser forçar sem www:
+# RewriteEngine On
+# RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+# RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+# ── Força HTTPS (descomente se tiver SSL) ───
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# ── Erro 404 personalizado ───────────────────
+ErrorDocument 404 /404.html
