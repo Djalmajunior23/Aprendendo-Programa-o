@@ -6,7 +6,7 @@ no navegador.
 
 ## 🌐 Acesse online
 
-**GitHub Pages:** `https://SEU-USUARIO.github.io/aprenda-programacao`
+**GitHub Pages:** `https://Djalmajunior23.github.io/aprenda-programacao`
 
 ---
 
